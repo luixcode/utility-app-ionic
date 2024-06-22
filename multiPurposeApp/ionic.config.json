@@ -1,0 +1,7 @@
+{
+  "name": "multiPurposeApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

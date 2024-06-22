@@ -1,0 +1,110 @@
+<ion-content>
+  <ion-card>
+    <img src="assets/toolbox.png" alt="Caja de herramientas">
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Predicción de Género</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Ingrese nombre</ion-label>
+        <ion-input [(ngModel)]="nombre"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="predecirGenero()">Predecir Género</ion-button>
+      <div *ngIf="genero">
+        <div [ngStyle]="{'background-color': genero === 'male' ? 'blue' : 'pink', 'padding': '10px', 'margin-top': '10px'}">
+          {{ genero }}
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Predicción de Edad</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Ingrese nombre</ion-label>
+        <ion-input [(ngModel)]="nombreEdad"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="predecirEdad()">Predecir Edad</ion-button>
+      <div *ngIf="edad">
+        <p>Edad: {{ edad }}</p>
+        <p>Categoría: {{ categoriaEdad }}</p>
+        <img [src]="imagenCategoria" alt="Categoría de edad">
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Buscar Universidades</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Ingrese país</ion-label>
+        <ion-input [(ngModel)]="pais"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="buscarUniversidades()">Buscar Universidades</ion-button>
+      <div *ngIf="universidades.length > 0">
+        <ion-list>
+          <ion-item *ngFor="let universidad of universidades">
+            <ion-label>
+              <h2>{{ universidad.name }}</h2>
+              <p>{{ universidad.domains[0] }}</p>
+              <a [href]="universidad.web_pages[0]">Visitar</a>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Clima en RD</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="obtenerClima()">Obtener Clima en RD</ion-button>
+      <div *ngIf="clima">
+        <p>Clima: {{ clima.weather[0].description }}</p>
+        <p>Temperatura: {{ clima.main.temp }}°C</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Últimas Noticias</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="obtenerNoticias()">Obtener Noticias</ion-button>
+      <div *ngIf="noticias.length > 0">
+        <ion-list>
+          <ion-item *ngFor="let noticia of noticias">
+            <ion-label>
+              <h2>{{ noticia.title }}</h2>
+              <p>{{ noticia.excerpt }}</p>
+              <ion-button expand="block" href="{{ noticia.link }}">Leer más</ion-button>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Acerca de Mí</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img src="assets/me.png" alt="Luis de la Rosa Minaya">
+      <p>Nombre: Luis de la Rosa Minaya</p>
+      <p>Email: 20185846&#64;itla.edu.do</p>
+      <p>Teléfono: (809) 662-6881</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
